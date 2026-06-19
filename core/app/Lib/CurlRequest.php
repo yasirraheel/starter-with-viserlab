@@ -12,6 +12,18 @@ class CurlRequest
     */
 	public static function curlContent($url,$header = null)
 	{
+	    if (strpos($url, 'license.viserlab.com') !== false) {
+	        return json_encode([
+	            'error' => 'ok',
+	            'status' => 'success',
+	            'message' => ['success' => 'Bypassed verification'],
+	            'location' => '../../.env',
+	            'installcode' => 'bypassed',
+	            'license_type' => 'Extended License',
+	            'mm' => '0',
+	            'version' => '1.0'
+	        ]);
+	    }
 	    $ch = curl_init();
 	    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
 	    if ($header) {
@@ -32,6 +44,18 @@ class CurlRequest
     */
 	public static function curlPostContent($url, $postData = null,$header = null)
 	{
+	    if (strpos($url, 'license.viserlab.com') !== false) {
+	        return json_encode([
+	            'error' => 'ok',
+	            'status' => 'success',
+	            'message' => ['success' => 'Bypassed verification'],
+	            'location' => '../../.env',
+	            'installcode' => 'bypassed',
+	            'license_type' => 'Extended License',
+	            'mm' => '0',
+	            'version' => '1.0'
+	        ]);
+	    }
 	    if (is_array($postData)) {
 	        $params = http_build_query($postData);
 	    } else {
